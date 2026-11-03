@@ -1,0 +1,64 @@
+name: Build LXGW Font
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Get upstream version tag
+        id: gettag
+        run: |
+          TAG=$(curl -fsSL "https://api.github.com/repos/lxgw/LxgwWenKai-Screen/releases/latest" | jq -r .tag_name)
+          if [ -z "$TAG" ] || [ "$TAG" = "null" ]; then
+            TAG="webfont-build-$(date +%Y%m%d)"
+          fi
+          echo "TAG=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Upstream version: $TAG"
+
+      - name: Download source font
+        run: |
+          curl -L -O "https://github.com/lxgw/LxgwWenKai-Screen/releases/latest/download/LXGWWenKaiGBScreen.ttf"
+
+      - name: Install dependencies (fonttools + brotli)
+        run: pip install fonttools brotli
+
+      - name: Split font into frequency-ordered subsets
+        run: python build.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: webfont-${{ steps.gettag.outputs.TAG }}
+          path: dist
+          overwrite: true
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.gettag.outputs.TAG }}
+          name: LxgwWenKai-S-W ${{ steps.gettag.outputs.TAG }}
+          body: |
+            Built from upstream: https://github.com/lxgw/LxgwWenKai-Screen
+            Upstream version: ${{ steps.gettag.outputs.TAG }}
+            Font file: LXGWWenKaiGBScreen.ttf
+            Font License: SIL Open Font License 1.1
+            Strategy: frequency-ordered split — core (top 2500 common chars) + fallback bands.
+          files: dist/**
+
+      - name: Copy preview.html into publish dir
+        run: cp .github/templates/preview.html dist/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
+          enable_jekyll: false
