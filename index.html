@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LXGW WenKai GB Screen WebFont 预览</title>
+<link rel="preconnect" href="https://hilllei.github.io" crossorigin>
+<!-- 预加载拉丁 + 核心包，保证中文首屏快速；其余兜底频带由浏览器按 unicode-range 按需触发 -->
+<link rel="preload" href="./latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./core.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./index.css">
+<style>
+*{box-sizing: border-box;margin:0;padding: 0;}
+body{
+  font-family: "LXGW WenKai GB Screen";
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: #222;
+}
+h2{
+  margin: 2rem 0 1rem;
+  font-weight: 400;
+  border-left: 4px solid #3388dd;
+  padding-left: 0.8rem;
+}
+.demo-block{
+  margin-bottom: 1.2rem;
+}
+.small{font-size: 14px;}
+.mid{font-size: 20px;}
+.large{font-size: 28px;}
+.xl{font-size: 36px;}
+.quote{
+  background: #f6f8fa;
+  padding: 1rem 1.4rem;
+  border-radius: 8px;
+}
+.page-header{
+  margin-bottom: 2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid #e3e8ef;
+}
+.page-header h1{
+  font-weight: 400;
+  font-size: 32px;
+  color: #1a1a1a;
+  margin-bottom: 0.6rem;
+}
+.subtitle{
+  font-size: 15px;
+  color: #667085;
+  line-height: 1.75;
+}
+</style>
+</head>
+<body>
+<header class="page-header">
+  <h1>霞鹜文楷屏幕版 · WebFont 分片子集预览</h1>
+  <p class="subtitle">基于汉字使用频率切分：高频常用字聚于核心包（core），生僻字按频率落入兜底频带（fallback），浏览器依据各 @font-face 的 unicode-range 自动按需加载。字体许可证：SIL Open Font License 1.1。</p>
+</header>
+<h2>字号测试 - 英文、数字、符号</h2>
+<div class="demo-block xl">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()+-=[]{};,.:<>?</div>
+<div class="demo-block mid">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()+-=[]{};,.:<>?</div>
+<div class="demo-block small">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()+-=[]{};,.:<>?</div>
+
+<h2>长文本简体中文测试</h2>
+<div class="demo-block mid">
+  落霞与孤鹜齐飞，秋水共长天一色。渔舟唱晚，响穷彭蠡之滨；雁阵惊寒，声断衡阳之浦。遥襟甫畅，逸兴遄飞。爽籁发而清风生，纤歌凝而白云遏。睢园绿竹，气凌彭泽之樽；邺水朱华，光照临川之笔。四美具，二难并。穷睇眄于中天，极娱游于暇日。天高地迥，觉宇宙之无穷；兴尽悲来，识盈虚之有数。望长安于日下，目吴会于云间。地势极而南溟深，天柱高而北辰远。关山难越，谁悲失路之人；萍水相逢，尽是他乡之客。怀帝阍而不见，奉宣室以何年？
+</div>
+<div class="demo-block quote mid">
+  嗟乎！时运不齐，命途多舛。冯唐易老，李广难封。屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时？所赖君子见机，达人知命。老当益壮，宁移白首之心？穷且益坚，不坠青云之志。酌贪泉而觉爽，处涸辙以犹欢。北海虽赊，扶摇可接；东隅已逝，桑榆非晚。孟尝高洁，空余报国之情；阮籍猖狂，岂效穷途之哭！
+</div>
+
+<h2>常用短句、混合标点</h2>
+<div class="demo-block mid">
+  春有百花秋有月，夏有凉风冬有雪。若无闲事挂心头，便是人间好时节。——《无门关》
+</div>
+<div class="demo-block mid">
+  青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢。古今多少事，都付笑谈中。
+</div>
+
+<h2>生僻、高频常用字密集测试</h2>
+<div class="demo-block mid">
+  鼎、鼐、羲、夔、畿、瞿、翕、翌、耆、耄、耋、雎、鹄、鹞、鹳、螭；
+  道可道，非常道；名可名，非常名。无名，天地之始；有名，万物之母。故常无欲，以观其妙；常有欲，以观其徼。此两者，同出而异名，同谓之玄。玄之又玄，众妙之门。
+</div>
+
+<h2>小字正文模拟文章阅读</h2>
+<div class="demo-block small">
+  很多人喜欢在阅读的时候选择舒服的字体，字形匀称、笔画清晰，长时间阅读不容易疲惫。这套霞鹜文楷屏幕版，专为屏幕显示优化，拆分为多个 unicode-range 子集，浏览器按需加载字体分片。当页面只有英文时，只加载拉丁子集；当出现中文，才加载对应的汉字分片，减少加载体积，提升页面速度。你可以切换网络、刷新页面，观察开发者工具网络面板，看各个 woff2 文件是否按需触发加载。
+</div>
+
+<h2>超大标题展示</h2>
+<div class="demo-block xl">
+  霞鹜文楷 · 屏幕版 LXGW WenKai GB Screen
+</div>
+<div class="demo-block large">
+  SIL OFL 1.1 开源字体 · WebFont 分片子集版本
+</div>
+</body>
+</html>
