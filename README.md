@@ -46,6 +46,9 @@
 <!-- 方式二：jsDelivr -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hilllei/LxgwWenKai-Screen-Web@gh-pages/index.css">
 
+<!-- 方式三：jsdmirror -->
+<link rel="stylesheet" href="https://cdn.jsdmirror.com/gh/hilllei/LxgwWenKai-Screen-Web@gh-pages/index.css">
+
 <style>
 body {
   font-family: "LXGW WenKai GB Screen";
@@ -56,8 +59,6 @@ body {
 > 也可锁定到某次提交以获得不可变引用：
 > `https://cdn.jsdelivr.net/gh/hilllei/LxgwWenKai-Screen-Web@<commit哈希>/index.css`
 
-## 🚀 可选加速（未启用）
-- **Cloudflare 边缘长缓存**：给 woff2 设 `Cache-Control: public, max-age=31536000, immutable`，并在你自己的 Cloudflare 域名前代理 GitHub Pages，可进一步提速（本项目默认未做）。
 
 ## 📜 许可证
 - 字体：**SIL Open Font License 1.1**（免费商用）
